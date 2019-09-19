@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final Object TAG = "tag";
     TextView mtv_github, mtv_sholocation, mtv_shousername, mtv_shocomapny, mtv_shoebio;
     private Button mbtn_show;
 //    private FragmentShowApi fragmentShowApi = new FragmentShowApi();
@@ -37,17 +38,25 @@ public class MainActivity extends AppCompatActivity {
         mbtn_show.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+try {
+
 
                 if (isConnected()) {
-                    Intent intent=new Intent(MainActivity.this,ShowGitResult.class);
-                    startActivity(intent);
-                    Toast.makeText(MainActivity.this, "Internet is Connected", Toast.LENGTH_SHORT).show();
+
+
+
+                        Intent intent = new Intent(MainActivity.this, ShowGitResult.class);
+                        startActivity(intent);
+                        Toast.makeText(MainActivity.this, "Internet is Connected", Toast.LENGTH_SHORT).show();
 //                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 //                    transaction.replace(R.id.fragment_holder, fragmentShowApi);
-//                    transaction.commit();
+//                    transaction.commit()
                 } else {
                     Toast.makeText(MainActivity.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
                 }
+}catch (Exception e){
+    Toast.makeText(MainActivity.this, "w88", Toast.LENGTH_SHORT).show();
+}
 
             }
         });
