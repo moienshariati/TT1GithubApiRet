@@ -13,18 +13,19 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
+
 public class MainActivity extends AppCompatActivity {
 
     private static final Object TAG = "tag";
     TextView mtv_github, mtv_sholocation, mtv_shousername, mtv_shocomapny, mtv_shoebio;
     private Button mbtn_show;
-//    private FragmentShowApi fragmentShowApi = new FragmentShowApi();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        showApiResult();
 
         mbtn_show = findViewById(R.id.btn_show);
 
@@ -45,12 +46,12 @@ try {
 
 
 
-                        Intent intent = new Intent(MainActivity.this, ShowGitResult.class);
-                        startActivity(intent);
-                        Toast.makeText(MainActivity.this, "Internet is Connected", Toast.LENGTH_SHORT).show();
-//                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-//                    transaction.replace(R.id.fragment_holder, fragmentShowApi);
-//                    transaction.commit()
+                    Toast.makeText(MainActivity.this, "Internet is Connected", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(MainActivity.this, ShowGitResult.class);
+                    startActivity(intent);
+                    Animatoo.animateZoom(MainActivity.this);
+
+
                 } else {
                     Toast.makeText(MainActivity.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
                 }
@@ -74,6 +75,13 @@ try {
             Log.e("Connectivity Exception", e.getMessage());
         }
         return connected;
+    }
+
+
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        Animatoo.animateSlideLeft(getApplicationContext()); //fire the slide left animation
     }
 
 //    public void showApiResult() {
